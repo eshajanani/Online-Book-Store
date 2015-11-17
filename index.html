@@ -1,0 +1,172 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The BookPlace</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/custom.css" rel="stylesheet">
+	<!-- Index css -->
+	<link href="css/index.css" rel="stylesheet">
+	<link rel="icon" href="images/logo.jpg" type="image/gif">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+	<script src="js/slideshow.js"></script>
+		<script src="prod_Display.js"></script>
+		<script src="cart.js"></script>
+		<script src="price.js"></script>
+		<script src="author.js"></script>
+		<script src="publisher.js"></script>
+		<script src="title.js"></script>
+		<script src="search.js"></script>
+		<script src="clear_fil.js"></script>
+		<script src="history_add.js"></script>
+		<script src="log_status.js"></script>
+		  </head>
+
+  <body onload="showProducts(0)">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+		  
+          <a class="navbar-brand" href="index.html">Book Store</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="register.html">Create Account</a></li>
+          </ul>
+		  <div id="log_details">
+		   <form class="navbar-form navbar-right" method="post" action="index.php" name="loginform">
+<div class="form-group">
+<input id="login_input_username" class="form-control" type="text" name="user_name" placeholder="Enter Username" required="">
+</div>
+<div class="form-group">
+<input id="login_input_password" class="form-control" type="password" name="user_password" autocomplete="off" required="" placeholder="Enter Password">
+</div>
+<input type="submit" name="login" value="Log in" class="btn btn-default">
+      </form>
+	  </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="cart-block">
+				<form >
+					<h4>Search :</h4> <input style="color: black;"type="text" id="src" size="25"> </input>
+				<br/><br/>
+				<button class="btn btn-default" type="submit" onclick="book_search()">Search</button>
+				<a class="btn btn-default" href="cart.html">Go To Cart</a>
+			</form>
+		</div>
+		<div class="panel panel-default panel-list">
+				<div class="panel-heading panel-heading-dark">
+					 <h3 class="panel-title">
+						Categories
+					</h3>
+				</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li class="list-group-item"><a href="#" onclick='showProducts(1)'>Biography and Autobiography</a></li>	
+					<li class="list-group-item"><a href="#"onclick='showProducts(2)'>Business</a></li>
+					<li class="list-group-item"><a href="#"onclick='showProducts(3)'>Cooking</a></li>
+					<li class="list-group-item"><a href="#"onclick='showProducts(4)'>Fiction</a></li>
+					<li class="list-group-item"><a href="#" onclick='showProducts(5)'>History</a></li>
+					<li class="list-group-item"><a href="#" onclick='showProducts(6)'>Health and Fitness</a></li>
+					<li class="list-group-item"><a href="#" onclick='showProducts(7)' >Technology and Engineering</a></li>
+					<li class="list-group-item"><a href="#" onclick='showProducts(0)' >Latest Release</a></li>
+                                        <li class="list-group-item"><a href="#" onclick='showProducts(0)' >Latest Release</a></li>
+                                        <li class="list-group-item"><a href="log_status.php"' >Log out</a></li>
+				</ul>
+			</div>
+			
+			<div class="panel panel-default panel-list">
+				<div class="panel-heading">
+					 <h3 class="panel-title">
+						Filter By:
+					</h3>
+				</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li class="list-group-item"><a href="#" onclick='clear_filter()'>Clear Filter</a></li>
+					<li class="list-group-item"><form><button type="submit" onclick="price()">Price</button><input type="text" id="start" size="1"> to <input type="text" id="end" size="1"></form></li>	
+					<li class="list-group-item"><form><button type="submit" onclick="auth()">Author</button><input type="text" id="author"size="10"></form></li>
+					<li class="list-group-item"><form><button type="submit" onclick="publisher()">Publisher</button><input type="text" id="pub_name"size="8"></form></li>
+					<li class="list-group-item"><form><button type="submit" onclick="book_tit()">Book Title</button><input type="text" id="tit_name"size="8"></form></li>
+					
+				
+					
+				</ul>
+			</div>
+			
+			
+		
+			</div>
+			<div class="col-md-8">
+				<div class="panel panel-default">
+				<div class="fadein">
+        <span class="slide">
+			
+            <img src="images/slide1.jpg" />
+        </span><!--/slide-->
+        
+        <span class="slide">
+					
+            <img src="images/slide2.jpg" />
+        </span><!--/slide-->
+        
+        <span class="slide">
+		
+            <img src="images/slide3.jpg" />
+        </span><!--/slide-->
+		 <span class="slide">
+		
+            <img src="images/slide4.jpg" />
+        </span><!--/slide-->
+		 <span class="slide">
+		
+            <img src="images/slide5.jpg" />
+        </span><!--/slide-->
+		
+        
+    </div><!--/slideshowWindow-->
+			
+				
+				<div class="panel-body">
+					<div class="row" id="row1">
+					<!--<script>showProducts(0)</script>-->
+					
+				<!-- Books will be displayed here -->
+					</div><!-- /.row -->
+				</div>
+				
+			</div>
+			</div>
+		</div>
+    </div><!-- /.container -->
+	
+	<div class="row footer">
+		<div class="container">
+			<p>The Book Place &copy; 2014, All Rights Reserved</p>
+		</div>
+	</div>
+
+   
+  </body>
+</html>	
